@@ -35,7 +35,7 @@ public class OnPremStatusPollApplication {
 
 	}
 	private static void postStatus() throws IOException {
-		URL url = new URL ("https://statusholder.dev-fss-pub.nais.io/status");
+		URL url = new URL ("http://statusholder.dev-fss-pub.nais.io/status");
 		HttpURLConnection con = (HttpURLConnection)url.openConnection();
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Content-Type", "application/json");
