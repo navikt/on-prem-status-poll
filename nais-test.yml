@@ -1,0 +1,30 @@
+apiVersion: nais.io/v1alpha1
+kind: Naisjob
+metadata:
+  name: on_prem_status_poll
+  namespace: navdig
+  labels:
+    team: navdig
+spec:
+  image: {{ image }}
+  env:
+    - name: TENANT
+      value: nav.no
+    - name: ENV
+      value: dev
+  azure:
+    application:
+      enabled: true
+
+  accessPolicy:
+    inbound:
+      rules:
+        - application: portalserver
+          namespace: navdig
+          cluster: dev-gcp
+    outbound:
+      rules:
+        - application: portalserver
+          namespace: navdig
+          cluster: dev-gcp
+
