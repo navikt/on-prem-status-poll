@@ -28,4 +28,7 @@ spec:
         - application: portalserver
           namespace: navdig
           cluster: dev-gcp
+        - application: statusholder
+          namespace: navdig
+          cluster: dev-fss
 
