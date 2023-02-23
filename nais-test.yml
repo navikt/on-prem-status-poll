@@ -1,7 +1,7 @@
 apiVersion: nais.io/v1alpha1
 kind: Naisjob
 metadata:
-  name: on_prem_status_poll
+  name: onpremstatuspoll
   namespace: navdig
   labels:
     team: navdig
