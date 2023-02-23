@@ -42,7 +42,7 @@ public class OnPremStatusPollApplication {
 		con.setRequestProperty("Accept", "application/json");
 		con.setDoOutput(true);
 		UUID uuid = UUID.randomUUID();
-		String jsonInputString = "{\"serviceId\":"+uuid.toString()+", \"status\": \"ISSUE\"}";
+		String jsonInputString = "{\"serviceId\":\""+uuid.toString()+"\", \"status\": \"ISSUE\"}";
 		try(OutputStream os = con.getOutputStream()) {
 			byte[] input = jsonInputString.getBytes("utf-8");
 			os.write(input, 0, input.length);
