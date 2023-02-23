@@ -20,6 +20,6 @@ WORKDIR /adevguide
 #RUN dir #Added
 
 
-COPY --from=maven target/on-prem-status-poll-0.0.1-SNAPSHOT.jar.jar ./on-prem-status-poll.jar
+COPY --from=maven target/on-prem-status-poll-0.0.1-SNAPSHOT.jar ./on-prem-status-poll.jar
 
 CMD ["java", "-jar", "./on-prem-status-poll.jar"]
