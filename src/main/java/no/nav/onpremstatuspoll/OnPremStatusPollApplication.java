@@ -35,7 +35,7 @@ public class OnPremStatusPollApplication {
 
 	}
 	private static void postStatus() throws IOException {
-		URL url = new URL ("http://statusholder.dev-fss-pub.nais.io/status");
+		URL url = new URL ("https://statusholder.dev.intern.nav.no/status");
 		HttpURLConnection con = (HttpURLConnection)url.openConnection();
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Content-Type", "application/json");
@@ -61,7 +61,7 @@ public class OnPremStatusPollApplication {
 	}
 
 	private static HttpURLConnection getPollingServices() throws IOException {
-		String urlString = "https://statusholder.dev-fss-pub.nais.io/status";
+		String urlString = "https://statusholder.dev.intern.nav.no/status";
 		URL url = new URL(urlString);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
