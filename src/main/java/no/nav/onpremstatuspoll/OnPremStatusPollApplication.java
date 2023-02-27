@@ -62,7 +62,7 @@ public class OnPremStatusPollApplication {
 	}
 
 	private static HttpURLConnection getPollingServices() throws IOException {
-		String urlString = "https://statusholder.dev.intern.nav.no/status";
+		String urlString = "https://status-api.dev.nav.no/Services";
 		URL url = new URL(urlString);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
