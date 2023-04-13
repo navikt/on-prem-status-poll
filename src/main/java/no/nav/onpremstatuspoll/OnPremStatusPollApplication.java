@@ -17,7 +17,7 @@ public class OnPremStatusPollApplication {
 			List<ServiceDto> services = PortalserverKlient.getPollingServices();
 			services.forEach(s ->
 
-							System.out.println(s.getName()+ " with polling url: "+ s.getPollingUrl())
+							System.out.println(s.getName()+" uuid: "+s.getId() +" with polling url: "+ s.getPollingUrl())
 
 					);
 
