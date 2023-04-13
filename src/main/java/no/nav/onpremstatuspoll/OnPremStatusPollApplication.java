@@ -21,7 +21,7 @@ public class OnPremStatusPollApplication {
 
 					);
 
-
+			System.out.println("Done getting services");
 		}
 		catch (Exception e){
 			System.out.println(e);
