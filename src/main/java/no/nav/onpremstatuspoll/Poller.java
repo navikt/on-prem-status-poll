@@ -21,6 +21,7 @@ public class Poller {
             LocalDateTime after = LocalDateTime.now();
             Integer responseTime = calcDiffBetween(before,after);
             recordDto.setResponseTime(responseTime);
+            recordDto.serviceId(serviceDto.getId());
             return  recordDto;
         }
 

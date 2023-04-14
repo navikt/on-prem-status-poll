@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @SpringBootApplication
@@ -15,19 +16,8 @@ public class OnPremStatusPollApplication {
 		SpringApplication.run(OnPremStatusPollApplication.class, args);
 		try{
 			List<ServiceDto> services = PortalserverKlient.getPollingServices();
-			services.forEach(s ->{
-
-							System.out.println("-----------------------------");
-							System.out.println(s.getName()+" uuid: "+s.getId() +" with polling url: "+ s.getPollingUrl());
-							RecordDto recordDto = Poller.poll(s);
-							System.out.println("status: "+ recordDto.getStatus());
-							System.out.println("Id: " + recordDto.getLogLink());
-							System.out.println("-----------------------------");
-					}
-
-
-					);
-
+			List<RecordDto> recordDtos = services.stream().map(Poller::poll).collect(Collectors.toList());
+			StatusholderKlient.postStatusesToStatusholder(recordDtos);
 			System.out.println("Done getting services");
 		}
 		catch (Exception e){
