@@ -7,16 +7,16 @@ metadata:
     team: navdig
 spec:
   image: {{ image }}
-#  schedule: "*/1 * * * *"
+  #  schedule: "*/1 * * * *"
   env:
     - name: TENANT
       value: nav.no
     - name: ENV
-      value: dev
+      value: prod
     - name: statusholder_url
-      value: https://statusholder.dev-fss-pub.nais.io
+      value: https://statusholder.prod-fss-pub.nais.io
     - name: portalserver_path
-      value: https://status-api.intern.dev.nav.no/rest
+      value: https://status-api.nav.no/rest
 
   azure:
     application:
@@ -27,7 +27,7 @@ spec:
       rules:
         - application: portalserver
           namespace: navdig
-          cluster: dev-gcp
+          cluster: prod-gcp
         - application: statusholder
           namespace: navdig
-          cluster: dev-fss
+          cluster: prod-fss
