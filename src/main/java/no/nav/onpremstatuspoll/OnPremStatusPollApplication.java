@@ -15,8 +15,11 @@ public class OnPremStatusPollApplication {
 
 		SpringApplication.run(OnPremStatusPollApplication.class, args);
 		try{
+			System.out.println("Line 1");
 			List<ServiceDto> services = PortalserverKlient.getPollingServices();
+			System.out.println("Line 2");
 			List<RecordDto> recordDtos = services.stream().map(Poller::poll).collect(Collectors.toList());
+			System.out.println("Line 3");
 			StatusholderKlient.postStatusesToStatusholder(recordDtos);
 			System.out.println("Done getting services");
 		}
