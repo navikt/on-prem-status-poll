@@ -60,7 +60,6 @@ public class PortalserverKlient {
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
-//        con.setRequestProperty ("Authorization", OauthUtil.getAccessTokenForPortal());
         con.setRequestProperty("Accept", "application/json");
         con.setDoOutput(true);
         Gson gson = new GsonBuilder()

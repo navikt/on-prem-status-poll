@@ -14,7 +14,7 @@ spec:
     - name: ENV
       value: prod
     - name: statusholder_url
-      value: https://statusholder.prod-fss-pub.nais.io
+      value: http://statusholder
     - name: portalserver_path
       value: https://status-api.nav.no/rest
 
