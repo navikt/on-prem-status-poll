@@ -36,5 +36,3 @@ spec:
         - application: statusholder
           namespace: navdig
           cluster: dev-fss
-  webproxy: true
-

@@ -27,10 +27,6 @@ public class PortalserverKlient {
                     && !s.getPollingUrl().equals("")
                     && !s.getPollingUrl().equals("null"))
                     .collect(Collectors.toList());
-
-//            if(System.getenv("ENV").equals("dev")){
-//                services.forEach(s -> s.setPollingUrl("MOCK"));
-//            }
             return services;
 
     }
