@@ -47,7 +47,8 @@ public class Poller {
 
     private static RecordDto mapToRecordDto(JsonObject jsonRecord){
         RecordDto recordDto = new RecordDto();
-        recordDto.setStatus(StatusDto.fromValue(jsonRecord.getString("status")));
+        StatusDto status = StatusDto.fromValue(jsonRecord.getString("status"));
+        recordDto.setStatus(StatusDto.UP.equals(status)? StatusDto.OK: status);
         recordDto.setDescription(jsonRecord.getString("description",null));
         recordDto.setLogLink(jsonRecord.getString("logglink",null));
         return recordDto;
