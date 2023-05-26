@@ -21,7 +21,7 @@ public class OnPremStatusPollApplication {
 			System.out.println("Line 2");
 			List<RecordDto> recordDtos = services.stream().map(Poller::poll).collect(Collectors.toList());
 			System.out.println("Line 3");
-			StatusholderKlient.postStatusesToStatusholder(recordDtos);
+			PortalserverKlient.postStatus(recordDtos);
 			System.out.println("Done getting services");
 		}
 		catch (Exception e){
