@@ -17,6 +17,7 @@ public class OnPremStatusPollApplication {
 		try{
 			System.out.println("Line 1");
 			List<ServiceDto> services = PortalserverKlient.getPollingServices();
+			services.forEach(s-> System.out.println(s.getPollingUrl()));
 			System.out.println("Line 2");
 			List<RecordDto> recordDtos = services.stream().map(Poller::poll).collect(Collectors.toList());
 			System.out.println("Line 3");
