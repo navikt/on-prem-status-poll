@@ -17,18 +17,10 @@ public class OnPremStatusPollApplication {
 		try{
 			System.out.println("Line 1");
 			List<ServiceDto> services = PortalserverKlient.getPollingServices();
-			services.forEach(s-> System.out.println(s.getPollingUrl()));
 			System.out.println("Line 2");
 			List<RecordDto> recordDtos = services.stream().map(Poller::poll).collect(Collectors.toList());
 			System.out.println("Line 3");
-			recordDtos.stream().forEach(r-> {
-				System.out.println("--------------------");
-				System.out.println(r.getServiceId());
-				System.out.println(r.getStatus());
-				System.out.println(r.getDescription());
-				System.out.println("--------------------");
-			});
-//			PortalserverKlient.postStatus(recordDtos);
+			PortalserverKlient.postStatus(recordDtos);
 			System.out.println("Done getting services");
 		}
 		catch (Exception e){
