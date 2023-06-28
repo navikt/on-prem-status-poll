@@ -4,10 +4,12 @@ import com.nimbusds.oauth2.sdk.*;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
 import com.nimbusds.oauth2.sdk.auth.Secret;
+import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.nimbusds.oauth2.sdk.token.AccessToken;
 
 import java.io.IOException;
+import java.net.Proxy;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -31,11 +33,12 @@ public class OauthUtil {
         AuthorizationGrant clientGrant = new ClientCredentialsGrant();
         // The token endpoint
         URI tokenEndpoint =  new URI("https://login.microsoftonline.com/"+TENANT+"/oauth2/v2.0/token");
-
+        System.out.println(System.getenv("JAVA_PROXY_OPTIONS"));
         // Make the token request
-        TokenRequest request = new TokenRequest(tokenEndpoint, clientAuth, clientGrant, scope);
+        HTTPRequest request = new TokenRequest(tokenEndpoint, clientAuth, clientGrant, scope).toHTTPRequest();
 
-        TokenResponse response = TokenResponse.parse(request.toHTTPRequest().send());
+//        Proxy proxy = new Proxy()
+        TokenResponse response = TokenResponse.parse(request.send());
 
         if (!response.indicatesSuccess()) {
             // We got an error response...
