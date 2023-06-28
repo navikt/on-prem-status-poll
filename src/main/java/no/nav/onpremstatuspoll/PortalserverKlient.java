@@ -12,7 +12,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class PortalserverKlient {
@@ -20,17 +19,15 @@ public class PortalserverKlient {
     static String portalApiUrl = System.getenv("portalserver_path");
 
     public static List<ServiceDto> getPollingServices() throws IOException{
-            UUID id = UUID.randomUUID();
-            return List.of(new ServiceDto().id(id).pollingUrl("http://localhost:3033/mock/Service/"+id));
-//            HttpURLConnection con = getPollingServicesConnection();
-//            String body = readBody(con);
-//            Gson g = new Gson();
-//            List<ServiceDto> services = Arrays.asList(g.fromJson(body, ServiceDto[].class));
-//            services = services.stream().filter(s -> s.getPollingUrl() != null
-//                    && !s.getPollingUrl().equals("")
-//                    && !s.getPollingUrl().equals("null"))
-//                    .collect(Collectors.toList());
-//            return services;
+            HttpURLConnection con = getPollingServicesConnection();
+            String body = readBody(con);
+            Gson g = new Gson();
+            List<ServiceDto> services = Arrays.asList(g.fromJson(body, ServiceDto[].class));
+            services = services.stream().filter(s -> s.getPollingUrl() != null
+                    && !s.getPollingUrl().equals("")
+                    && !s.getPollingUrl().equals("null"))
+                    .collect(Collectors.toList());
+            return services;
 
     }
 
