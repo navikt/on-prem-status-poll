@@ -16,7 +16,7 @@ spec:
     - name: statusholder_url
       value: http://statusholder
     - name: portalserver_path
-      value: portalserver
+      value: http://portalserver:navdig:svc:cluster:local
 
   azure:
     application:
@@ -31,3 +31,4 @@ spec:
         - application: statusholder
           namespace: navdig
           cluster: prod-fss
+
