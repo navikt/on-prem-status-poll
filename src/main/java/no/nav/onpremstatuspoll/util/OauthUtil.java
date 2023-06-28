@@ -40,6 +40,7 @@ public class OauthUtil {
         if (!response.indicatesSuccess()) {
             // We got an error response...
             TokenErrorResponse errorResponse = response.toErrorResponse();
+            System.out.println(errorResponse);
         }
 
         AccessTokenResponse successResponse = response.toSuccessResponse();
