@@ -28,7 +28,4 @@ spec:
         - application: portalserver
           namespace: navdig
           cluster: prod-gcp
-        - application: statusholder
-          namespace: navdig
-          cluster: prod-fss
-
+  webproxy: true
