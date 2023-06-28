@@ -16,7 +16,7 @@ spec:
     - name: statusholder_url
       value: http://statusholder
     - name: portalserver_path
-      value: https://status-api.nav.no/rest
+      value: portalserver
 
   azure:
     application:
