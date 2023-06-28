@@ -60,6 +60,7 @@ public class PortalserverKlient {
         URL url = new URL (portalApiUrl + "/UpdateRecords");
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("POST");
+        System.out.println("AT"+ OauthUtil.getAccessTokenForPortal().substring(0,5));
         con.setRequestProperty("Content-Type", "application/json");
         con.setRequestProperty ("Authorization", OauthUtil.getAccessTokenForPortal());
         con.setRequestProperty("Accept", "application/json");
