@@ -26,7 +26,7 @@ public class OauthUtil {
 
 
 
-    public static AccessToken getAccessTokenForPortal() throws URISyntaxException, IOException, ParseException {
+    public static String getAccessTokenForPortal() throws URISyntaxException, IOException, ParseException {
 
         AuthorizationGrant clientGrant = new ClientCredentialsGrant();
         // The token endpoint
@@ -47,6 +47,6 @@ public class OauthUtil {
         // Get the access token
         AccessToken accessToken = successResponse.getTokens().getAccessToken();
 
-        return accessToken;
+        return accessToken.toJSONString();
     }
 }
