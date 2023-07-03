@@ -9,9 +9,7 @@ import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.nimbusds.oauth2.sdk.token.AccessToken;
 
 import java.io.IOException;
-import java.net.Proxy;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.*;
 
 public class OauthUtil {
     // Construct the client credentials grant
@@ -37,7 +35,9 @@ public class OauthUtil {
         // Make the token request
         HTTPRequest request = new TokenRequest(tokenEndpoint, clientAuth, clientGrant, scope).toHTTPRequest();
 
-//        Proxy proxy = new Proxy()
+        SocketAddress addr = new InetSocketAddress("webproxy.nais", 8088);
+        Proxy proxy = new Proxy(Proxy.Type.HTTP,addr);
+        request.setProxy(proxy);
         TokenResponse response = TokenResponse.parse(request.send());
 
         if (!response.indicatesSuccess()) {
