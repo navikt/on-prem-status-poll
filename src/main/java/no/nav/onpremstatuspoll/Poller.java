@@ -51,6 +51,7 @@ public class Poller {
         recordDto.setStatus(StatusDto.UP.equals(status)? StatusDto.OK: status);
         recordDto.setDescription(jsonRecord.getString("description",null));
         recordDto.setLogLink(jsonRecord.getString("logglink",null));
+        recordDto.setSource(RecordSourceDto.ONPREM_POLL);
         return recordDto;
 
     }
