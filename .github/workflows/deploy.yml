@@ -2,13 +2,10 @@ name: Build, push, and deploy
 on: [push]
 
 permissions:
-  actions: read
-  contents: read
-  id-token: write
-  packages: write
-  security-events: write
+   contents: read
+   id-token: write
 
-  
+
 jobs:
   build:
     name: Build and push image
