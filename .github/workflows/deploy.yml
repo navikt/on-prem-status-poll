@@ -31,7 +31,7 @@ jobs:
 
       # Nais deploy DEV-FSS🚀
       - name: Deploy to dev-FSS
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/dev'
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-fss
