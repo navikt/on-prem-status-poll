@@ -61,6 +61,7 @@ public class Poller {
         URL url = new URL(urlString);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
+        con.setRequestProperty("Accept", "application/json");
         return con;
     }
 
