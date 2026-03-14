@@ -1,25 +1,18 @@
-FROM maven:3.6.3-openjdk-17 as maven
+FROM cgr.dev/chainguard/jdk:latest AS build
 
-COPY pom.xml pom.xml
+WORKDIR /app
 
-COPY . .
+COPY .mvn/ .mvn/
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:go-offline -B
 
-RUN mvn clean install
+COPY src/ src/
+RUN ./mvnw clean package -DskipTests
 
-RUN mvn dependency:go-offline -B
+FROM cgr.dev/chainguard/jre:latest
 
-RUN mvn package
+WORKDIR /app
 
-FROM openjdk:17
+COPY --from=build /app/target/on-prem-status-poll-0.0.1-SNAPSHOT.jar app.jar
 
-#RUN dir #Added
-
-WORKDIR /adevguide
-
-
-#RUN dir #Added
-
-
-COPY --from=maven target/on-prem-status-poll-0.0.1-SNAPSHOT.jar ./on-prem-status-poll.jar
-
-CMD ["java", "-jar", "./on-prem-status-poll.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
